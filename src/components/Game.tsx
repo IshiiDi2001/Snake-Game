@@ -9,6 +9,7 @@ import Food from "./Food";
 import { checkEatsFood } from "../utils/checkEatsFood";
 import { randomFoodPosition } from "../utils/randomFoodPosition";
 import Header from "./Header";
+import GameOverModal from "./GameOverModal";
 
 const SNAKE_INITIAL_POSITION = [{ x: 5, y: 5 }];
 const FOOD_INITIAL_POSITION = { x: 5, y: 20 };
@@ -26,6 +27,7 @@ export default function Game(): JSX.Element {
   const [isGameOver, setIsGameOver] = React.useState<boolean>(false);
   const [isPaused, setIsPaused] = React.useState<boolean>(false);
   const [score, setScore] = React.useState<number>(0);
+  const [modalVisible, setModalVisible] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (!isGameOver) {
@@ -41,7 +43,7 @@ export default function Game(): JSX.Element {
     const newHead = { ...snakeHead };
 
     if (checkGsmeOver(snakeHead, GAME_BOUNDS)) {
-      setIsGameOver((prev) => !prev);
+      handleGameOver();
       return;
     }
 
@@ -89,6 +91,11 @@ export default function Game(): JSX.Element {
     }
   };
 
+  const handleGameOver = () => {
+    setIsGameOver(true);
+    setModalVisible(true);
+  };
+
   const reloadGame = () => {
     setSnake(SNAKE_INITIAL_POSITION);
     setFood(FOOD_INITIAL_POSITION);
@@ -96,6 +103,7 @@ export default function Game(): JSX.Element {
     setScore(0);
     setDirection(Direction.Right);
     setIsPaused(false);
+    setModalVisible(false);
   };
 
   const pauseGame = () => {
@@ -124,6 +132,12 @@ export default function Game(): JSX.Element {
           <Snake snake={snake} />
           <Food x={food.x} y={food.y} />
         </View>
+        <GameOverModal
+          visible={modalVisible}
+          score={score}
+          onPlayAgain={reloadGame}
+          onClose={() => setModalVisible(false)}
+        />
       </SafeAreaView>
     </PanGestureHandler>
   );
