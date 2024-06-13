@@ -7,7 +7,7 @@ Welcome to the Snake Game repository! This project is a classic Snake game built
 - **Classic Gameplay:** Enjoy the traditional Snake game mechanics with intuitive touch controls.
 - **Responsive Design:** Adapts smoothly to different screen sizes and orientations.
 - **Smooth Animations:** Experience fluid animations and responsive touch gestures for a delightful user experience.
-- **Game Over Detection:** Automatically detects collisions with walls to end the game.
+- **Game Over Detection:** Automatically detects collisions with walls and own body to end the game.
 - **Score Tracking:** Keeps track of your score as you collect food items.
 
 - **Show Final Score:** Shows the final score after the game over.
