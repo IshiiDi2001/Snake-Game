@@ -4,7 +4,7 @@ import { Colors } from "../styles/colors";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import { Coordinate, Direction, GestureEventType } from "../types/type";
 import Snake from "./Snake";
-import { checkGsmeOver } from "../utils/checkGameOver";
+import { checkGameOver } from "../utils/checkGameOver";
 import Food from "./Food";
 import { checkEatsFood } from "../utils/checkEatsFood";
 import { randomFoodPosition } from "../utils/randomFoodPosition";
@@ -42,7 +42,7 @@ export default function Game(): JSX.Element {
     const snakeHead = snake[0];
     const newHead = { ...snakeHead };
 
-    if (checkGsmeOver(snakeHead, GAME_BOUNDS)) {
+    if (checkGameOver(snakeHead, snake.slice(1), GAME_BOUNDS)) {
       handleGameOver();
       return;
     }
