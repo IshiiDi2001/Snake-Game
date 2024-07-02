@@ -1,6 +1,10 @@
-# Snake Game 🐍
+<div align="center">
+  <h1>Snake Game 🐍</h1>
+  <h3>Welcome to the Snake Game repository! This project is a classic Snake game built using React Native and TypeScript, designed to run seamlessly on both iOS and Android devices.
+</h3>
+  <img src="assets/Snake-Game.gif" alt="Demo" width="300"> <br>
+</div>
 
-Welcome to the Snake Game repository! This project is a classic Snake game built using React Native and TypeScript, designed to run seamlessly on both iOS and Android devices.
 
 ## Key Features
 
